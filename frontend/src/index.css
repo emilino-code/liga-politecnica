@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --vp-bg: #f8fafc;
+    --vp-surface: #ffffff;
+    --vp-primary: #0ea5e9;
+    --vp-primary-hover: #0284c7;
+    --vp-secondary: #facc15;
+    --vp-accent: #f43f5e;
+    --vp-text: #0f172a;
+    --vp-text-muted: #475569;
+    --vp-border: #e2e8f0;
+}
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 336 100% 25%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 336 35% 96%;
+        --secondary-foreground: 336 60% 20%;
+        --muted: 336 20% 96%;
+        --muted-foreground: 215 16% 46%;
+        --accent: 45 100% 50%;
+        --accent-foreground: 336 100% 15%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 336 15% 88%;
+        --input: 336 15% 88%;
+        --ring: 336 100% 25%;
+        --radius: 0.875rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html,
+    body,
+    #root {
+        height: 100%;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: "Figtree", system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-display {
+        font-family: "Outfit", system-ui, sans-serif;
+        letter-spacing: -0.02em;
+    }
+}
+
+/* Custom utilities for the volleyball brand */
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+    .vp-card {
+        @apply bg-white rounded-2xl border border-slate-100 shadow-sm transition-all;
+    }
+    .vp-card-hover {
+        @apply hover:shadow-md hover:-translate-y-1 transition-all duration-200;
+    }
+    .grain {
+        background-image: radial-gradient(
+            rgba(15, 23, 42, 0.04) 1px,
+            transparent 1px
+        );
+        background-size: 24px 24px;
+    }
+    .court-stripe {
+        background: repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 60px,
+            rgba(128, 0, 64, 0.05) 60px,
+            rgba(128, 0, 64, 0.05) 120px
+        );
+    }
+    .pill-match {
+        @apply rounded-xl border px-3 py-2 text-sm font-semibold shadow-sm cursor-grab transition-all;
+    }
+    .pill-match:active {
+        cursor: grabbing;
+    }
+}
+
+/* hide debug wrappers */
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
