@@ -1,0 +1,80 @@
+{
+  "theme": "LIGHT",
+  "archetype": "6 (Vibrant Play)",
+  "domain": "Sports, Athletics, Community Leagues",
+  "tone": "Sporty, dynamic, approachable, easy-to-use",
+  "target_audience": "Non-technical community organizers, teachers in LatAm",
+  "colors": {
+    "background": "#F8FAFC",
+    "surface": "#FFFFFF",
+    "primary": "#0ea5e9",
+    "primary_hover": "#0284c7",
+    "secondary": "#facc15",
+    "secondary_hover": "#eab308",
+    "accent": "#f43f5e",
+    "text_primary": "#0f172a",
+    "text_secondary": "#475569",
+    "border": "#e2e8f0"
+  },
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Figtree",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-semibold",
+      "body": "text-base font-medium text-slate-700",
+      "small": "text-sm font-medium text-slate-500",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-sky-600"
+    }
+  },
+  "spacing_and_layout": {
+    "general": "Generous spacing. Use p-6, p-8, p-12. Avoid cramped data views.",
+    "border_radius": "Tactile and friendly. Use rounded-2xl for cards, rounded-xl for buttons and inputs.",
+    "dashboard_grid": "Bento style 'Control Room' for organizers. grid-cols-1 md:grid-cols-3 lg:grid-cols-4 with gap-6.",
+    "surfaces": "Neumorphism 'Clay & Crisp'. White surfaces with shadow-sm and 1px border-slate-100 to ground them. Interactive cards lift on hover (-translate-y-1, shadow-md)."
+  },
+  "components": {
+    "buttons": "Chunky, touch-friendly. Minimum h-12. Primary buttons use bg-sky-500 text-white shadow-sm. Use subtle scaling on active (active:scale-95).",
+    "timeline_editor": "Spotify-style drag & drop. Use horizontal scrollable lanes (canchas) with discrete draggable 'pills' (partidos). The pills should be colorful (e.g., bg-sky-100 text-sky-900 border border-sky-200) with rounded-full or rounded-xl.",
+    "cards": "Minimalist white boxes with soft styling. Internal padding p-6 or p-8.",
+    "forms": "Use Shadcn UI inputs but customize with rounded-xl, h-12, and clear focus rings (focus:ring-sky-500)."
+  },
+  "media": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1479859546309-cd77fa21c8f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwxfHx2b2xsZXliYWxsJTIwY291cnR8ZW58MHx8fHwxNzc3OTQ0NjA0fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Aerial view of a white and red volleyball court",
+      "usage": "Use in the landing page hero section with a heavy sky-blue gradient overlay (bg-sky-900/80 or similar) to ensure text readability."
+    },
+    "action_shot_1": {
+      "url": "https://images.unsplash.com/photo-1771909713106-86b9a412964a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA5MDF8MHwxfHNlYXJjaHwzfHx2b2xsZXliYWxsJTIwbWF0Y2h8ZW58MHx8fHwxNzc3OTQ0NjA0fDA&ixlib=rb-4.1.0&q=85",
+      "description": "People playing volleyball on outdoor court",
+      "usage": "Use for feature sections, 'Crear Torneo Rápido' or 'Crear Liga' card backgrounds."
+    },
+    "action_shot_2": {
+      "url": "https://images.unsplash.com/photo-1601512986351-9b0e01780eef?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA5MDF8MHwxfHNlYXJjaHw0fHx2b2xsZXliYWxsJTIwbWF0Y2h8ZW58MHx8fHwxNzc3OTQ0NjA0fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Man in white shorts playing volleyball",
+      "usage": "Secondary feature image or about section."
+    }
+  },
+  "motion_and_interaction": {
+    "hover_states": "All cards and buttons must have distinct hover states. Cards slightly lift. Buttons get brighter.",
+    "drag_and_drop": "Draggable elements should have cursor-grab, on drag active cursor-grabbing and a slight rotation (rotate-2) + shadow-lg.",
+    "page_transitions": "Smooth fade-ins for wizard steps."
+  },
+  "accessibility_and_testing": {
+    "contrast": "Ensure white text on primary sky-blue has enough contrast. If not, use a darker blue for the primary background.",
+    "data_testid": "ALL interactive elements (buttons, inputs, tabs, drag items) MUST have data-testid attributes (e.g., data-testid='create-league-button')."
+  },
+  "instructions_to_main_agent": [
+    "Install lucide-react for icons.",
+    "Install @hello-pangea/dnd for the Spotify-style timeline drag and drop editor.",
+    "Install date-fns for date manipulation in the league wizard.",
+    "Ensure the Landing Page has two massive, highly visible call-to-action buttons for 'Crear Liga' and 'Crear Torneo Rápido'.",
+    "In the Dashboard, use Shadcn UI customized with soft rounded-2xl edges to feel tactile.",
+    "The timeline drag & drop must represent 'Canchas' (Courts) as horizontal lanes, and 'Partidos' (Matches) as draggable pills with start/end times.",
+    "Use standard HTML inputs customized with Tailwind for wizards if Shadcn's react-hook-form integration is too rigid, but Shadcn forms are preferred.",
+    "The unified public search should filter through a single input both standings (tables) and matches.",
+    "For the 'Only Varonil / Only Femenil / Mixto' day selector, use segmented controls (Shadcn Tabs customized to look like a pill toggle)."
+  ]
+}
