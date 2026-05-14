@@ -1214,27 +1214,17 @@ async def shutdown():
     client.close()
 
 
-# Mount router AFTER all decorators above
+# --- Mount router AFTER all decorators above ---
 app.include_router(api)
 
-# CORS — allow_credentials with wildcard requires regex
-origins_env = os.environ.get("CORS_ORIGINS", "*")
-origins = [o.strip() for o in origins_env.split(",") if o.strip()]
-if origins == ["*"]:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origin_regex=".*",
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-else:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
+# --- CORS Configuration ---
+# Esta configuración permite que tu Frontend de React se comunique 
+# con tu Backend de Python sin bloqueos de seguridad.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite peticiones desde cualquier URL (como tu link de Render)
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite GET, POST, PUT, DELETE, etc.
+    allow_headers=["*"],  # Permite todos los encabezados
+)
 
