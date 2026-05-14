@@ -1191,11 +1191,13 @@ async def root():
     return {"app": "VolleyPro", "ok": True}
 
 # Servir el Frontend
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+app.mount("/static", StaticFiles(directory="frontend/public"), name="static")
 
+# 2. Ajustamos la ruta del index
 @app.get("/")
 async def serve_index():
-    return FileResponse("frontend/index.html")
+    # Agregamos '/public/' a la ruta del archivo
+    return FileResponse("frontend/public/index.html")
 
 # ----------------- Startup -----------------
 @app.on_event("startup")
