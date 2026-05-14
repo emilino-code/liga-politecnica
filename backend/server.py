@@ -1189,50 +1189,13 @@ async def generate_playoffs(
 @api.get("/")
 async def root():
     return {"app": "VolleyPro", "ok": True}
-# 1. Montamos la carpeta donde están tus archivos HTML/JS
-# Asegúrate de que tu carpeta en GitHub se llame 'frontend'
+
+# Servir el Frontend
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
-# 2. Ruta principal: en lugar de dar error, envía tu index.html
 @app.get("/")
 async def serve_index():
     return FileResponse("frontend/index.html")
-
-# 3. Mantenemos tus eventos de Startup originales
-@app.on_event("startup")
-async def startup():
-    await db.users.create_index("email", unique=True)
-    await db.tournaments.create_index([("user_id", 1), ("created_at", -1)])
-    await db.tournaments.create_index("slug", unique=True)
-    await db.matches.create_index("tournament_id")
-    await db.matches.create_index("id", unique=True)
-
-@app.on_event("shutdown")
-async def shutdown():
-    client.close()
-
-# Mount router AFTER all decorators above
-app.include_router(api)
-
-# Tu configuración de CORS original
-origins_env = os.environ.get("CORS_ORIGINS", "*")
-origins = [o.strip() for o in origins_env.split(",") if o.strip()]
-if origins == ["*"]:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origin_regex=".*",
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-else:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
 
 # ----------------- Startup -----------------
 @app.on_event("startup")
